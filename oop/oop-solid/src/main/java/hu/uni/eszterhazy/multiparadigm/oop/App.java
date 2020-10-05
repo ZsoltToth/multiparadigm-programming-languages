@@ -9,6 +9,11 @@ import java.util.Date;
 
 /**
  * Design an API for writing and reading LogEntry objects into JSON format with Jackson.
+ *
+ * Functional Requirements:
+ *  - Logger can create and write log entries.
+ *  - A Logger can write entries into different files. For example your service logs into the service.logs and all.logs.
+ *  - You can read and query Log files by {date, level, source, message}
  */
 public class App {
     public static void main(String[] args) throws IOException {
