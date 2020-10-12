@@ -2,6 +2,8 @@ package hu.uni.eszterhazy.multiparadigm;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hu.uni.eszterhazy.multiparadigm.model.Car;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 
@@ -32,10 +34,25 @@ public class App
             new Car("qwe-432", "yellow", "Porshce", "911")
         );
 
+        Collection<ParkingSlotLogEntry> logs =  Arrays.asList(
+            new ParkingSlotLogEntry(car1, "8:00", "C4", "ARRIVED"),
+            new ParkingSlotLogEntry(car1, "12:00", "C4", "LEFT")
+        );
+
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(System.out, cars);
+        mapper.writeValue(System.out, logs);
 
         log.info(String.format("%s parked at %d",car1, 1));
         log.info(String.format("%s left  %d",car1, 1));
+    }
+
+    @Data
+    @AllArgsConstructor
+    public static class ParkingSlotLogEntry{
+
+        private Car car;
+        private String timestamp;
+        private String parkingSlot;
+        private String direction;
     }
 }
