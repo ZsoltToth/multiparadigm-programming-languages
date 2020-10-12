@@ -24,6 +24,7 @@ public class App {
                 .message("Fatal Error")
                 .build();
 
+
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.writeValue(System.out, entry);
 
