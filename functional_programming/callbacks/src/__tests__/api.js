@@ -190,6 +190,17 @@ describe('Grading Tests', ()=>{
         expect(actual).toEqual(expected);
     })
 
+    it('calculates the avg score', ()=>{
+        const expected = 54.2;
+        const actual = api.avg_score(exam_results);
+        expect(actual).toBeCloseTo(actual, 5);
+    })
+    it('calculates the std score', ()=>{
+        const expected = 27.1249;
+        const actual = api.std_score(exam_results)
+        expect(actual).toBeCloseTo(actual, 5);
+    })
+
 
 
 });
