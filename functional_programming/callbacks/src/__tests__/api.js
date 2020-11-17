@@ -185,7 +185,7 @@ describe('Grading Tests', ()=>{
 
     it('Grade A passed Student', ()=>{
         const INDEX_OF_CHARLIE_WHO_PASSED = 2;
-        const expected = {...exam_results[INDEX_OF_CHARLIE_WHO_PASSED], result : FAILED_EXAM_RESULT};
+        const expected = {...exam_results[INDEX_OF_CHARLIE_WHO_PASSED], result : PASSED_EXAM_RESULT};
         const actual = api.grade_students(exam_results)[INDEX_OF_CHARLIE_WHO_PASSED];
         expect(actual).toEqual(expected);
     })
