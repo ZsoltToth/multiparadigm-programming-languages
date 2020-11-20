@@ -1,0 +1,28 @@
+{
+  "name": "part_time",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^26.6.1",
+    "rewire": "^5.0.0",
+    "@babel/runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.1"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/transform-runtime",
+      {}
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
