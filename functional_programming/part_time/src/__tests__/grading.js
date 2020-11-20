@@ -100,4 +100,10 @@ describe('Grading Tests', ()=>{
         const PASSED_STUDENT = {...scores[2],result : 'PASSED'};
         expect(grading.gradeStudents(scores)[2]).toEqual(PASSED_STUDENT);
     });
+
+    it('tests the mean of scores', ()=>{
+        const array = [{score : 1}, {score : 2}, {score : 3}]
+        const expectedMean = 2.0;
+        expect(grading.meanScoreOfExamResults(array)).toBeCloseTo(expectedMean, 4);
+    })
 });

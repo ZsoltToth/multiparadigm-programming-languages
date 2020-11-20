@@ -1,4 +1,4 @@
-import fs from 'fs';
+const fs = require('fs');
 
 const readDatafile = (filePath, callback) => {
    fs.readFile(filePath,{encoding: "utf-8", flag: 'r'}, (err, data) => {
@@ -7,7 +7,7 @@ const readDatafile = (filePath, callback) => {
 }
 
 const gradeStudents = (exam_results, minimum_score = 50) =>{
-    return [{name : 'Alice', score: 32, result : 'FAILED'}];
+    return exam_results.map(n=> ({...n,result: (n.score>=minimum_score?'PASSED':'FAILED')}));
 }
 
 const meanScoreOfExamResults = (exam_results = []) => { return 0.0;}
