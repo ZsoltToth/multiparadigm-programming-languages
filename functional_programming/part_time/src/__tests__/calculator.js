@@ -34,7 +34,6 @@ describe('Calculator Tests',()=>{
     })
 
     it('Sum without arguments', ()=>{
-        const array = [];
         const expected  = 0;
         const actual = calculator.sum();
         expect(actual).toBeCloseTo(expected, 1)
@@ -51,5 +50,25 @@ describe('Calculator Tests',()=>{
         const expected  = 0;
         const actual = calculator.sum(array);
         expect(actual).toBeCloseTo(expected, 1)
+    })
+
+    it('Power a random array', ()=>{
+        const array = [1,2,-3];
+        const expected  = [1,4,9];
+        const actual = calculator.power(array);
+        expect(actual).toEqual(expected)
+    })
+    it('Power a random array to the 3rd.', ()=>{
+        const array = [1,2,-3];
+        const expected  = [1,8, -27];
+        const actual = calculator.power(array,3);
+        expect(actual).toEqual(expected)
+    })
+
+    it('Filter the positives only', ()=>{
+        const array = [1,2,-3];
+        const expected  = [1,2];
+        const actual = calculator.positives(array)
+        expect(actual).toEqual(expected)
     })
 })
