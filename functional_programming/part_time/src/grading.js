@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 
 const readDatafile = (filePath, callback) => {
    fs.readFile(filePath,{encoding: "utf-8", flag: 'r'}, (err, data) => {
