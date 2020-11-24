@@ -25,3 +25,5 @@ module.exports = {
     welcomeCustomer : welcomeCustomer,
     welcomePromise : welcomePromise
 }
+
+

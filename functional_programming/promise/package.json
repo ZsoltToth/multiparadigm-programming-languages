@@ -6,6 +6,9 @@
   "scripts": {
     "test": "jest"
   },
+  "dependencies": {
+    "axios": "^0.21.0"
+  },
   "devDependencies": {
     "jest": "^26.6.1",
     "rewire": "^5.0.0",

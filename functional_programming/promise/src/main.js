@@ -22,3 +22,12 @@ const tasks = [
 let scheduler = new Scheduler(tasks);
 
 scheduler.schedule();
+
+
+const axios = require('axios');
+
+axios.get('https://uni-eszterhazy.hu/')
+    .then((resp) => {console.log({
+        status : resp.status,
+        body : resp.data
+    })});
