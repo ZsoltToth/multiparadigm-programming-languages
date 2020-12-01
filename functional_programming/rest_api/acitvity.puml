@@ -1,0 +1,24 @@
+@startuml
+
+
+(*) --> ===Fetch===
+note left : cities.map(city => fetchWatherInfo(city))
+--> "Fetch Eger"
+--> ===Collect===
+note left : Promise.all(...).then(...)
+--> (*)
+
+===Fetch=== --> "Fetch Debrecen"
+--> ===Collect===
+
+
+===Fetch===  --> "Fetch Budapest"
+--> ===Collect===
+
+
+===Fetch===  --> "Fetch Szeged"
+--> ===Collect===
+
+
+
+@enduml

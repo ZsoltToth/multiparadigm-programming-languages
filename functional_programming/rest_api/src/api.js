@@ -6,9 +6,11 @@ const dummy_function = () => {
 
 const fetchWeatherInfo = (city) => {
     const api_key = process.env.OPEN_WEATHER_API_KEY;
-    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`)
-        .then(resp => console.log(resp.data))
-        .catch(err => console.error(resp));
+    return new Promise((resolve, reject) => {
+        axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`)
+            .then(resp => resolve(resp.data))
+            .catch(err => reject({}));
+    });
 }
 
 module.exports = {
