@@ -12,6 +12,7 @@ public class Greed {
     private static final int MAXIMUM_DICE_VALUE = 6;
 
     private static final Map<Integer,Integer> TRIPLE_SCORES;
+    private static final Map<Integer,Integer> TRIPLE_SCORE_MODIFIERS;
 
     static {
         TRIPLE_SCORES = new HashMap<>();
@@ -21,6 +22,12 @@ public class Greed {
         TRIPLE_SCORES.put(4,400);
         TRIPLE_SCORES.put(5,500);
         TRIPLE_SCORES.put(6,600);
+
+        TRIPLE_SCORE_MODIFIERS = new HashMap<>();
+        TRIPLE_SCORE_MODIFIERS.put(3,1);
+        TRIPLE_SCORE_MODIFIERS.put(4,2);
+        TRIPLE_SCORE_MODIFIERS.put(5,4);
+        TRIPLE_SCORE_MODIFIERS.put(6,8);
     }
 
     public int score(int[] dice) throws IllegalArgumentException{
@@ -60,19 +67,7 @@ public class Greed {
     private int calculateTripleScores(int[] diceValueCounts){
         int score = 0;
         for(int index = 0; index < diceValueCounts.length; index++){
-            if(diceValueCounts[index] < 3) continue;
-            if(diceValueCounts[index] == 3){
-                score += TRIPLE_SCORES.get(index+1);
-            }
-            if(diceValueCounts[index] == 4){
-                score += TRIPLE_SCORES.get(index+1) * 2;
-            }
-            if(diceValueCounts[index] == 5){
-                score += TRIPLE_SCORES.get(index+1) * 4;
-            }
-            if(diceValueCounts[index] == 6){
-                score += TRIPLE_SCORES.get(index+1) * 8;
-            }
+            score += TRIPLE_SCORES.get(index+1) * TRIPLE_SCORE_MODIFIERS.getOrDefault(diceValueCounts[index],0);
         }
         return score;
     }
