@@ -34,7 +34,7 @@ public class Greed {
             score += 1200;
             return score;
         }
-        if(Arrays.stream(diceValueCounts).map(diceValueCount -> diceValueCount == 2 ? 1 : 0).reduce(0,(subtotal,element) -> subtotal + element) == 3){
+        if(Arrays.stream(diceValueCounts).map(diceValueCount -> diceValueCount == 2 ? 1 : 0).reduce(0, Integer::sum) == 3){
             score += 800;
             return score;
         }
