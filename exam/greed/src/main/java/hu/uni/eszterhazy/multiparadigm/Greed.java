@@ -28,16 +28,37 @@ public class Greed {
         checkDice(dice);
         int[] diceValueCounts = new int[] {0,0,0, 0,0,0};
         Arrays.stream(dice).forEach(die -> diceValueCounts[die-1]++);
-        if(Arrays.stream(diceValueCounts)
-                .mapToObj(dieValueCount -> dieValueCount == 1)
-                .reduce(true, (subtotal, element)-> subtotal && element)){
+        if(isStraight(diceValueCounts)){
             score += 1200;
             return score;
         }
-        if(Arrays.stream(diceValueCounts).map(diceValueCount -> diceValueCount == 2 ? 1 : 0).reduce(0, Integer::sum) == 3){
+        if(isThreePairs(diceValueCounts)){
             score += 800;
             return score;
         }
+        if(isSingleOne(diceValueCounts)){
+            score += 100;
+        }
+        if(isSingleFive(diceValueCounts)){
+            score += 50;
+        }
+        score += calculateTripleScores(diceValueCounts);
+        return score;
+    }
+
+    private void checkDice(int[] dice) throws  IllegalArgumentException{
+        if(dice.length < MINIMUM_DICE_COUNT || dice.length > MAXIMUM_DICE_COUNT){
+            throw new IllegalArgumentException();
+        }
+        Arrays.stream(dice).forEach(die -> {
+            if((die < MINIMUM_DICE_VALUE) || (die > MAXIMUM_DICE_VALUE)){
+                throw new IllegalArgumentException();
+            }
+        });
+    }
+
+    private int calculateTripleScores(int[] diceValueCounts){
+        int score = 0;
         for(int index = 0; index < diceValueCounts.length; index++){
             if(diceValueCounts[index] < 3) continue;
             if(diceValueCounts[index] == 3){
@@ -53,25 +74,25 @@ public class Greed {
                 score += TRIPLE_SCORES.get(index+1) * 8;
             }
         }
-        if(diceValueCounts[0] == 1){
-            score += 100;
-        }
-        if(diceValueCounts[4] == 1){
-            score += 100;
-        }
         return score;
     }
 
-    private void checkDice(int[] dice) throws  IllegalArgumentException{
-        if(dice.length < MINIMUM_DICE_COUNT || dice.length > MAXIMUM_DICE_COUNT){
-            throw new IllegalArgumentException();
-        }
-        Arrays.stream(dice).forEach(die -> {
-            if((die < MINIMUM_DICE_VALUE) || (die > MAXIMUM_DICE_VALUE)){
-                throw new IllegalArgumentException();
-            }
-        });
+    private boolean isThreePairs(int[] diceValueCounts){
+        return Arrays.stream(diceValueCounts).map(diceValueCount -> diceValueCount == 2 ? 1 : 0).reduce(0, Integer::sum) == 3;
     }
 
+    private boolean isStraight(int[] diceValueCounts){
+        return Arrays.stream(diceValueCounts)
+                .mapToObj(dieValueCount -> dieValueCount == 1)
+                .reduce(true, (subtotal, element)-> subtotal && element);
+    }
+
+    private boolean isSingleOne(int[] diceValueCounts){
+        return diceValueCounts[0] == 1;
+    }
+
+    private boolean isSingleFive(int[] diceValueCounts){
+        return diceValueCounts[4] == 1;
+    }
 
 }
