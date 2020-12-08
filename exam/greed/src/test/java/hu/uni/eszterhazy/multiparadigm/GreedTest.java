@@ -51,4 +51,82 @@ class GreedTest {
             greed.score(dice);
         });
     }
+
+    @Test
+    void testThreePairs(){
+        //given
+        int[] dice = new int[] {1,1,2,2,3,3};
+        int expected = 800;
+        //when
+        int actual = greed.score(dice);
+        //then
+        Assertions.assertEquals(expected,actual);
+    }
+
+    @Test
+    void testStraight(){
+        //given
+        int[] dice = new int[] {1,2,3,4,5,6};
+        int expected = 1200;
+        //when
+        int actual = greed.score(dice);
+        //then
+        Assertions.assertEquals(expected,actual);
+    }
+
+    @Test
+    void testTripleWithoutModifier(){
+        //given
+        int[] dice = new int[] {1,1,1,2,2,3};
+        int expected = 1000;
+        //when
+        int actual = greed.score(dice);
+        //then
+        Assertions.assertEquals(expected,actual);
+    }
+
+    @Test
+    void testTripleWithDoubleModifier(){
+        //given
+        int[] dice = new int[] {1,1,1,1,2,3};
+        int expected = 2000;
+        //when
+        int actual = greed.score(dice);
+        //then
+        Assertions.assertEquals(expected,actual);
+    }
+    @Test
+    void testTripleWithFourTimesModifier(){
+        //given
+        int[] dice = new int[] {1,1,1,1,1,3};
+        int expected = 4000;
+        //when
+        int actual = greed.score(dice);
+        //then
+        Assertions.assertEquals(expected,actual);
+    }
+
+    @Test
+    void testTripleWithEightTimesModifier(){
+        //given
+        int[] dice = new int[] {1,1,1,1,1,1};
+        int expected = 8000;
+        //when
+        int actual = greed.score(dice);
+        //then
+        Assertions.assertEquals(expected,actual);
+    }
+
+    @Test
+    void testTripleTwice(){
+        //given
+        int[] dice = new int[] {1,1,1,2,2,2};
+        int expected = 1000 + 200;
+        //when
+        int actual = greed.score(dice);
+        //then
+        Assertions.assertEquals(expected,actual);
+
+    }
+
 }
