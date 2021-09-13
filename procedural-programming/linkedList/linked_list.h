@@ -7,6 +7,19 @@ struct Node {
     struct Node *next;
 };
 
+/**
+ * Using Node-s in the main function is difficult and it may lead to errors (mistakes).
+ * Wrap the nodes and handling the linked list into a struct.
+ * Add functions to manage the linked list with this struct.
+ *
+ * Task:
+ *  - Refactor these functions to use only the LinkedList structure as an argument.
+ *  - Refactor the main file and remove all Node variables from it.
+ */
+struct LinkedList{
+    struct Node* head;
+};
+
 void print_linked_list(struct Node* head);
 
 void insert_element(struct Node* list, int value);
