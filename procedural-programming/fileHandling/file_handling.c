@@ -73,13 +73,28 @@ struct PasswdEntryList* read_passwd_file(){
 }
 
 struct PasswdEntry* process_passwd_record(char*  line){
+    //Passwd File Structure
+    //username:x:uid:gid:comment:home:shell
+    const char PASSWD_FILE_DELIMITER[2] = ":";
     struct PasswdEntry *result = malloc(sizeof (struct PasswdEntryList));
-    char dummy_text[50] = "test";
-    strcpy(result->username, dummy_text);
-    strcpy(result->comment, dummy_text);
-    strcpy(result->home_dir, dummy_text);
-    strcpy(result->shell, dummy_text);
-    result->user_id = 1;
-    result->group_id = 1;
+    char *token = NULL;
+    token = strtok(line, PASSWD_FILE_DELIMITER);
+    strcpy(result->username, token);
+    token = strtok(NULL, PASSWD_FILE_DELIMITER); // x <-- means shadow file
+    token = strtok(NULL, PASSWD_FILE_DELIMITER);
+    result->user_id = atoi(token);
+    token = strtok(NULL, PASSWD_FILE_DELIMITER);
+    result->group_id = atoi(token);
+    token = strtok(NULL, PASSWD_FILE_DELIMITER);
+    strcpy(result->comment, token);
+    token = strtok(NULL, PASSWD_FILE_DELIMITER);
+    strcpy(result->home_dir, token);
+    token = strtok(NULL, PASSWD_FILE_DELIMITER);
+    if(token != NULL){
+        strcpy(result->shell, token);
+    }
+    else{
+        strcpy(result->shell, "");
+    }
     return result;
 }

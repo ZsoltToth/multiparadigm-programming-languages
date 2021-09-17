@@ -9,7 +9,10 @@ int main() {
     struct PasswdEntryList* passwdEntryList = read_passwd_file();
     struct PasswdEntryListNode* current_node = passwdEntryList->head;
     while(current_node != NULL){
-        printf("%s\n",current_node->data->username);
+        printf("User: %s (%d,%d)\n",current_node->data->username, current_node->data->user_id, current_node->data->group_id);
+        printf("Comment: %s\n",current_node->data->comment);
+        printf("Home: %s\n",current_node->data->home_dir);
+        printf("Shell: %s\n", current_node->data->shell);
         current_node = current_node->next;
         i++;
     }
