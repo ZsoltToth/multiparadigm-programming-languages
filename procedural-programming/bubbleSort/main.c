@@ -4,7 +4,7 @@
 /*
  * Tasks:
  *  - Refactor code
- *  - Discuss Quadratic and Sort functions.
+ *  - Discuss Sort functions.
  *  - Discuss Function Pointer
  */
 int decrease(double a, double b){
