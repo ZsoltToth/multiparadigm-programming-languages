@@ -20,14 +20,14 @@ int main() {
         printf("%d: %f\n", i, a[i]);
     }
     printf("\n----------\n");
-    bubbleSort(&a, 5);
+    bubbleSort((double *) &a, 5);
     for(i = 0; i < 5; i++){
         printf("%d: %f\n", i, a[i]);
     }
 
     printf("\n----------\n");
     double a2[] = {1,4,-2, 3, 9};
-    bubbleSortEnhanced(&a2, 5, decrease);
+    bubbleSortEnhanced((double *) &a2, 5, decrease);
     for(i = 0; i < 5; i++){
         printf("%d: %f\n", i, a2[i]);
     }

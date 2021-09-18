@@ -3,8 +3,8 @@
 #include "file_handling.h"
 
 int main() {
-//    print_main_file();
-//    print_users_from_passwd();
+    print_main_file();
+    print_users_from_passwd();
     int i = 0;
     struct PasswdEntryList* passwdEntryList = read_passwd_file();
     struct PasswdEntryListNode* current_node = passwdEntryList->head;
