@@ -1,8 +1,13 @@
 package hu.ekcu.java.service;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
 import java.util.Collection;
 import java.util.HashSet;
 
+@Slf4j
+@Service
 public class ArraySplitterImpl implements ArraySplitter {
 
     @Override
@@ -23,14 +28,31 @@ public class ArraySplitterImpl implements ArraySplitter {
      * @return
      */
     private Collection<ArraySlices> split(String[] array, int groupCount, ArraySlices prefix){
+//       log.info(String.format("Split: array %s", array));
         Collection<ArraySlices> result = new HashSet<>();
         if(groupCount == 0){
+            if(array.length == 0 && prefix.validate()){
+                result.add(prefix);
+            }
             return result;
         }
         for(int i = 1; i < array.length; i++){
             if(!array[0].equals(array[i])){
                 continue;
             }
+            String[][] headAndTail = splitArrayAtIndex(array, i);
+            String[] head = headAndTail[0];
+            String[] tail = headAndTail[1];
+            try {
+                ArraySlices prefixExtended = prefix.clone();
+                prefixExtended.getSlices().add(new ArraySlice(head));
+                result.addAll(
+                        split(tail, groupCount-1, prefixExtended)
+                );
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
+
 
         }
         return result;

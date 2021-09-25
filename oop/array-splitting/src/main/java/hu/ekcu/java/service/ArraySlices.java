@@ -2,12 +2,19 @@ package hu.ekcu.java.service;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
-class ArraySlices implements ArraySliceValidator, Cloneable {
+@ToString
+public class ArraySlices implements ArraySliceValidator, Cloneable {
     List<ArraySlice> slices;
+
+    protected ArraySlices(){
+        this.slices = new ArrayList<>();
+    }
 
     @Override
     public boolean validate() {
@@ -30,6 +37,7 @@ class ArraySlices implements ArraySliceValidator, Cloneable {
     }
 }
 
+@ToString
 @AllArgsConstructor
 class ArraySlice implements ArraySliceValidator, Cloneable {
     String[] segment;
