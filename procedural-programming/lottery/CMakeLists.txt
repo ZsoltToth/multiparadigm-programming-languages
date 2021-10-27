@@ -3,4 +3,5 @@ project(lottery C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(lottery main.c)
+add_executable(lottery main.c lottery.h lottery.c)
+
