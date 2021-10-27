@@ -2,7 +2,14 @@
 #include <stdlib.h>
 #include "lottery.h"
 
-
+/**
+ * Task:
+ *  - Read Unknown number of ticket from Console then generate a ticket and count the matching numbers.
+ *  - Read the ticket into a linked list of LotteryTicket structs.
+ *  - Read the tickets in a do while or while loop.
+ *  - Add a function for calculating the matches between two LotteryTicket structs.
+ * @return
+ */
 int main() {
     printf("Hello, World!\n");
     int i = 0;
