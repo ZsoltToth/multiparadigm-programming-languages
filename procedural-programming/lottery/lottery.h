@@ -17,4 +17,6 @@ struct LotteryTicket{
 
 struct LotteryTicket* generateTicket();
 
+struct LotteryTicket* readTicketFromConsole();
+
 void printTicket(struct LotteryTicket* ticket);

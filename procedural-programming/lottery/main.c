@@ -8,10 +8,12 @@ int main() {
     int i = 0;
     int iteration = 0;
     struct LotteryTicket* ticket;
-    for(iteration = 0; iteration < 1e4; iteration++){
-        printf("#%d: ", iteration);
-        ticket = generateTicket();
-        printTicket(ticket);
-    }
+//    for(iteration = 0; iteration < 1e4; iteration++){
+//        printf("#%d: ", iteration);
+//        ticket = generateTicket();
+//        printTicket(ticket);
+//    }
+    ticket = readTicketFromConsole();
+    printTicket(ticket);
     return 0;
 }
