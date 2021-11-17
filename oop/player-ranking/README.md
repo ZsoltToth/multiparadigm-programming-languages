@@ -61,3 +61,13 @@ void test(){
     checking
     }
 ```
+
+
+# Player Rating System Acceptance Criteria
+
+- Players are stored somehow.
+  - Use Interface and Store Players in Memory
+- Record Games between two players. 
+  - Log Winner, Loser
+  - Update Scores
+- Score Calculated by ELO Rating System
