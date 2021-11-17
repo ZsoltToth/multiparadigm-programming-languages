@@ -15,7 +15,7 @@ public interface QuadraticSolver {
      */
     double[] solve(double a, double b, double c);
 
-    Solution solve(Equation equation) throws  NoRealSolutionException;
+    Solution solve(Equation equation) throws NoRealSolutionException;
 
     double[] solveWithException(double a, double b, double c) throws NoRealSolutionException;
 

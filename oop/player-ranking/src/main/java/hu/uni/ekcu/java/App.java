@@ -1,7 +1,6 @@
 package hu.uni.ekcu.java;
 
 import hu.uni.ekcu.java.service.Notifier;
-import hu.uni.ekcu.java.service.NotifierStdErrImpl;
 import hu.uni.ekcu.java.service.NotifierStdOutImpl;
 import hu.uni.ekcu.java.service.PrimeService;
 import hu.uni.ekcu.java.service.QuadraticSolver;
