@@ -2,6 +2,7 @@ package hu.uni.ekcu.java.persist;
 
 import hu.uni.ekcu.java.model.Player;
 import hu.uni.ekcu.java.persist.exceptions.PlayerNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -14,11 +15,11 @@ public class PlayerRepositoryInMemoryImpl implements PlayerRepository {
 
     private Set<Player> database;
 
-    public PlayerRepositoryInMemoryImpl(){
+    public PlayerRepositoryInMemoryImpl() {
         this(new HashSet<>());
     }
 
-    protected PlayerRepositoryInMemoryImpl(Collection<Player> database){
+    protected PlayerRepositoryInMemoryImpl(Collection<Player> database) {
         this.database = new HashSet<>(database);
     }
 
@@ -29,21 +30,21 @@ public class PlayerRepositoryInMemoryImpl implements PlayerRepository {
 
     @Override
     public Player readByUsername(String username) throws PlayerNotFoundException {
-        try{
+        try {
             return database.stream().filter(player -> player.getName().equals(username)).findFirst().get();
-        }
-        catch (NoSuchElementException ex){
+        } catch (NoSuchElementException ex) {
             throw new PlayerNotFoundException(String.format("Player (%s) was not found!", username));
         }
     }
 
     @Override
     public Player save(Player player) {
-        return null;
+        database.add(player);
+        return player;
     }
 
     @Override
     public void delete(Player player) {
-
+        database.remove(player);
     }
 }
